@@ -46,16 +46,6 @@ const pizzaData = [
   },
 ];
 
-function App() {
-  return (
-    <div>
-      <h1>Hello React !!!</h1>
-      <Pizza />
-      <Pizza />
-    </div>
-  );
-}
-
 /**
  * COMPONENTS
  * building block of UI
@@ -72,6 +62,25 @@ function App() {
  * 4->never nest component declaration
  */
 
+/**
+ * JSX
+ * -> declerative syntax to describe what component look like and how they work
+ * -> each component retrun one block of JSX
+ * -> extention of JS embed HTML + CSS and react
+ * -> babel convert JSX(browser dont understand it) to JS
+ * -> imperative approach (JS manually tell all to do)
+ * -> declarative appraoch(just describe what ui should look like)
+ */
+function App() {
+  return (
+    <div>
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+
 function Pizza() {
   return (
     <div>
@@ -81,6 +90,27 @@ function Pizza() {
     </div>
   );
 }
+function Header() {
+  return <h1>Fast React Pizza CO.</h1>;
+}
+function Menu() {
+  return (
+    <div>
+      <h2>Our Menu</h2>
+      <Pizza />
+      <Pizza />
+    </div>
+  );
+}
+function Footer() {
+  // return React.createElement("footer", null, "we are currently open");
+
+  return (
+    <footer>{new Date().toLocaleTimeString()} We're currently open</footer>
+  );
+}
+
+// const Test = () => {};
 
 // render app in DOM v18
 const root = ReactDOM.createRoot(document.getElementById("root"));
