@@ -83,15 +83,6 @@ function App() {
   );
 }
 
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci "></img>
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>
-  );
-}
 function Header() {
   // INLINE CSS
   // const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
@@ -106,9 +97,40 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="pizzas/spinaci.jpg"
+        price={10}
+      />
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mozarella, mushrooms, and onion"
+        price={12}
+        photoName="pizzas/funghi.jpg"
+      />
     </main>
+  );
+}
+
+/**
+ * PROPS (PROPERTY)
+ * ->passing data between components from parent to child components
+ * ->first pass prop in component then receive it then
+ *
+ */
+
+function Pizza(props) {
+  // console.log(props);
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name}></img>
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price + 1}</span>
+      </div>
+    </div>
   );
 }
 function Footer() {
