@@ -97,18 +97,41 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza
+      {/* <Pizza
         name="Pizza Spinaci"
         ingredients="Tomato, mozarella, spinach, and ricotta cheese"
         photoName="pizzas/spinaci.jpg"
         price={10}
-      />
-      <Pizza
+      /> */}
+      {/* <Pizza
         name="Pizza Funghi"
         ingredients="Tomato, mozarella, mushrooms, and onion"
         price={12}
         photoName="pizzas/funghi.jpg"
-      />
+      /> */}
+
+      {/* <div>
+        {pizzaData.map((pizza) => (
+          <Pizza name={pizza.name} photoName={pizza.photoName} />
+        ))}
+      </div> */}
+
+      {/* <div>
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} />
+        ))}
+      </div>
+      
+      // this still does not have unique key
+      */}
+
+      {/* ideal rendering */}
+
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+        ))}
+      </ul>
     </main>
   );
 }
@@ -117,20 +140,33 @@ function Menu() {
  * PROPS (PROPERTY)
  * ->passing data between components from parent to child components
  * ->first pass prop in component then receive it then
- *
+ * -> pass info down the tree
+ * -> can pass any value in prop
+ * -> props are ready-only => data in component is made from props (data coming from parent component basically outside)and state(internal component data that can be updated by logic basically inside)
+ *-> props cant be modified by child component that are read only to mutate prop you need state
+ *-> prop is obj if u change you change parent too and that cause side effect coz u are changing data which is outside ,react is pure function that means not affecting outside
+ * -> one way data flow=> only from parent to child not opposite only top to bottom (not in angular) it makes application predictable and easier, debug becomes easy, two way data binding is less efficent
+ */
+
+/**
+ * RULES OF JSX
+ * -> essestially HTML but with {can add JS code}
+ * -> {statement are not allowed here like if else or for or switch}
+ * -> JSX -> JS expression
+ * -> a peace of JSX has on root element
  */
 
 function Pizza(props) {
   // console.log(props);
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt={props.name}></img>
+    <li className="pizza">
+      <img src={props.pizzaObj.photoName} alt={props.name}></img>
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price + 1}</span>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 function Footer() {
