@@ -176,6 +176,8 @@ function Menu() {
 
 function Pizza(props) {
   // console.log(props);
+
+  if (props.pizzaObj.soldOut) return null;
   return (
     <li className="pizza">
       <img src={props.pizzaObj.photoName} alt={props.name}></img>
@@ -201,6 +203,14 @@ function Footer() {
   // else {
   //   alert("sorry");
   // }
+
+  {
+    /* conditional rendering with multiple returns */
+  }
+
+  // if (!isOpen) return <p>Closed</p>;
+  // we dont want this coz footer is not included
+
   return (
     <footer className="footer">
       {/* {new Date().toLocaleTimeString()} We're currently open */}
