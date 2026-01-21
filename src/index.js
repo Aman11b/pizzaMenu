@@ -131,12 +131,24 @@ function Menu() {
 
       {/* ideal rendering */}
 
-      {numPizzas > 0 && (
+      {/* {numPizzas > 0 && (
         <ul className="pizzas">
           {pizzas.map((pizza) => (
             <Pizza pizzaObj={pizza} key={pizza.name} />
           ))}
         </ul>
+      )} */}
+
+      {/* doing same with ternary operator */}
+
+      {numPizzas > 0 ? (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      ) : (
+        <p>We're still owrking on our menu. Please come back later!</p>
       )}
     </main>
   );
@@ -179,7 +191,7 @@ function Footer() {
   // return React.createElement("footer", null, "we are currently open");
 
   const hour = new Date().getHours();
-  const openHour = 8;
+  const openHour = 12;
   const closeHour = 22;
 
   const isOpen = hour >= openHour && hour <= closeHour;
@@ -194,13 +206,18 @@ function Footer() {
       {/* {new Date().toLocaleTimeString()} We're currently open */}
 
       {/* conditional rendering */}
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>
-            We're open untill {closeHour}:00. Come visit us or order online.{" "}
+            We're open untill {closeHour}:00. Come visit us or order
+            online.{" "}
           </p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00
+        </p>
       )}
     </footer>
   );
@@ -213,6 +230,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 // StrictMode-> render twice in order to find bugs and check if outdated parts of API
