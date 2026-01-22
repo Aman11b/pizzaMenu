@@ -93,6 +93,7 @@ function Header() {
     </header>
   );
 }
+
 function Menu() {
   const pizzas = pizzaData;
   // this will work if empty array is passed too
@@ -101,6 +102,7 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
+
       {/* <Pizza
         name="Pizza Spinaci"
         ingredients="Tomato, mozarella, spinach, and ricotta cheese"
@@ -142,17 +144,31 @@ function Menu() {
       {/* doing same with ternary operator */}
 
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
+        <React.Fragment>
+          <p>
+            Authentic Italian cuisine.6 creative dishes to choose from.All from
+            our stone oven,all oraganic,all delicious
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </React.Fragment>
       ) : (
         <p>We're still owrking on our menu. Please come back later!</p>
       )}
     </main>
   );
 }
+
+/**
+ * React fragment
+ * lets you add element without leaving trace in HTML tree so in DOM
+ * just add <></> or <React.Fragment> thats it
+ * sometimes key is required while rendering list
+ * it allow more then one element inside JSX
+ */
 
 /**
  * PROPS (PROPERTY)
